@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="b"></div>
+    <div class="b"></div>
+    <div class="b"></div>
+    <div class="b"></div>
+    <div>234</div>
+    <div>
+        <div id="父">
+<!--            测试-->
+            aaa
+            <div id="子1"></div>
+            <div id="子2"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var elementClassB = document.getElementsByClassName("b");
+    var elementsByTagName = document.getElementsByTagName("div");
+    var elementByFu = document.getElementById("父");
+    var elementByFu1 = document.querySelectorAll("#父");
+
+    var keys = [];
+    for (const i in elementByFu) {
+        keys.push(i);
+    }
+    console.log(keys.indexOf("parentNode"));
+    console.log(elementByFu.parentNode);
+    //文本标签加标签
+    console.log(elementByFu.childNodes);
+    //普通html标签
+    console.log(elementByFu.children);
+
+    var result = [];
+    var nodes = elementByFu.childNodes;
+    console.log(nodes);
+    for (const i in nodes) {
+        console.log(i);
+    }
+    console.log(result);
+
+    var result1 = [];
+    var nodes1 = elementByFu.childNodes;
+    for (var i=0 ;i<nodes1.length;i++) {
+        if (nodes1[i].nodeType === 1) result1.push(nodes1[i]);
+    }
+    console.log(result1);
+
+    // var arr2 = [1,2,[3,4],[5,6,[7,8]],9];
+    // for (let i = 0; i < arr2.length; i++) {
+    //     if (Array.isArray(arr2[i])){
+    //         for (let j = 0; j < arr2[i].length; j++) {
+    //             arr2.push(arr2[i][j]);
+    //         }
+    //     }else {
+    //         console.log(arr2[i]);
+    //     }
+    // }
+
+
+    // var html = document.querySelector("html");
+    // var htmlElements =[html];
+    //
+    // for (let i = 0; i < htmlElements.length; i++) {
+    //     if (htmlElements[i].children && htmlElements[i].children.length>0){
+    //         console.log(htmlElements[i]);
+    //         for (let j = 0; j < htmlElements[i].children.length; j++) {
+    //             htmlElements.push(htmlElements[i].children[j]);
+    //         }
+    //     }else {
+    //         console.log(htmlElements[i]);
+    //     }
+    // }
+
+    //手写getById
+    function getEleByID(id){
+        var html = document.querySelector("html");
+        var htmlElements =[html];
+        for (let i = 0; i < htmlElements.length; i++) {
+            if (htmlElements[i].children && htmlElements[i].children.length>0){
+                for (let j = 0; j < htmlElements[i].children.length; j++) {
+                    htmlElements.push(htmlElements[i].children[j]);
+                }
+            }
+            if (htmlElements[i].id === id){
+                return htmlElements[i];
+            }
+        }
+    }
+
+    console.log(getEleByID("子1"));
+
+    //反向找html节点
+    var inner = document.getElementById("父");
+    while (inner.parentNode){
+        inner=inner.parentNode;
+    }
+    console.log(inner);
+
+
+    //获取所有叶子节点
+    var html = document.querySelector("html");
+    var htmlElements =[html];
+    var res =[];
+    for (let i = 0; i < htmlElements.length; i++) {
+
+        if (htmlElements[i].children && htmlElements[i].children.length>0){
+            for (let j = 0; j < htmlElements[i].children.length; j++) {
+                htmlElements.push(htmlElements[i].children[j]);
+            }
+        }
+        if (htmlElements[i].children.length === 0){
+            res.push(htmlElements[i]);
+        }
+    }
+    console.log(res);
+
+    function getClassName(className) {
+        var html = document.querySelector("html");
+        var htmlElements =[html];
+        var res =[];
+        for (let i = 0; i < htmlElements.length; i++) {
+
+            if (htmlElements[i].children && htmlElements[i].children.length>0){
+                for (let j = 0; j < htmlElements[i].children.length; j++) {
+                    htmlElements.push(htmlElements[i].children[j]);
+                }
+            }
+            if (htmlElements[i].className === className){
+                res.push(htmlElements[i]);
+            }
+        }
+        return res;
+    }
+
+    console.log(getClassName("b"));
+
+
+
+
+    function getTagName(tagName) {
+        var html = document.querySelector("html");
+        var htmlElements =[html];
+        var res =[];
+        for (let i = 0; i < htmlElements.length; i++) {
+
+            if (htmlElements[i].children && htmlElements[i].children.length>0){
+                for (let j = 0; j < htmlElements[i].children.length; j++) {
+                    htmlElements.push(htmlElements[i].children[j]);
+                }
+            }
+            if (htmlElements[i].localName === tagName){
+                res.push(htmlElements[i]);
+            }
+        }
+        return res;
+    }
+
+    console.log(getTagName("div"));
+
+
+</script>
+</html>
