@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>密码框格式提示信息</h1>
+设置密码：<input type="password" onblur="checkPwd()"><img src="images/right.png"><span>请输入正确的登录密码</span>
+</body>
+
+<script>
+    var imgEle = document.querySelector("img");
+    var spanEle = document.querySelector("span");
+    imgEle.style="display:none";
+    spanEle.style="display:none";
+    function checkPwd() {
+        var inputEle = document.querySelector("input");
+        if (inputEle.value.length>=6 && inputEle.value.length<=16){
+            imgEle.style="display:inline-block";
+            imgEle.src="images/right.png";
+            spanEle.style="display:none";
+        }else{
+            imgEle.style="display:inline-block;color:red";
+            imgEle.src="images/wrong.png";
+            spanEle.style="display:inline;color:red";
+        }
+    }
+</script>
+</html>

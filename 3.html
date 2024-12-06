@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环精灵图背景</title>
+    <style>
+        .sprite-icon {
+            display: inline-block;
+            width: 44px;
+            height: 40px;
+            background-image: url('images/sprite.png'); /* 精灵图的路径 */
+            background-position: -0px -0px; /* 精灵图的偏移量 */
+            background-size: auto; /* 默认尺寸 */
+            background-repeat: no-repeat; /* 防止背景重复 */
+        }
+    </style>
+</head>
+<body>
+<div class="sprite-icon"></div>
+<div class="sprite-icon"></div>
+<div class="sprite-icon"></div>
+<div class="sprite-icon"></div><br>
+<div class="sprite-icon"></div>
+<div class="sprite-icon"></div>
+<div class="sprite-icon"></div>
+<div class="sprite-icon"></div>
+</body>
+<script>
+    var divs = document.querySelectorAll("div");
+    for (let i = 0; i < divs.length; i++) {
+        var str = "background-position: -0px -"+(i*44)+"px";
+        console.log(str);
+        divs[i].style=str;
+    }
+    console.log(divs);
+</script>
+</html>

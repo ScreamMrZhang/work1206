@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 475px;
+            height: 475px;
+        }
+    </style>
+</head>
+<body>
+<h1>分时问候</h1>
+<p>方法名为setImgAndDiv()</p>
+<img src="images/goodmorning.jpg">
+<div>上午好</div>
+</body>
+<script>
+    function setImgAndDiv(str) {
+        var nowTime = new Date(str);
+        if (str.length<1){
+            nowTime=new Date();
+        }
+        var hours = nowTime.getHours();
+        var imageElement = document.querySelector("img");
+        var divElement = document.querySelector("div");
+        if (hours<13){
+            imageElement.src="images/goodmorning.jpg";
+            divElement.innerText="上午好";
+        }else if (hours<18){
+            imageElement.src="images/goodafternoon.jpg";
+            divElement.innerText="下午好";
+        }else{
+            imageElement.src="images/goodevening.jpg";
+            divElement.innerText="晚上好";
+        }
+    }
+    setImgAndDiv("2024/12/06 12:00:00")
+
+
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>单选按钮</h1>
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<button id="all" onclick="quanxuan()">全选</button>
+<button id="no" onclick="buxuan()">不选</button>
+<button id="fan" onclick="fan()">反选</button>
+
+</body>
+<script>
+    var inputs = document.querySelectorAll("input");
+    function quanxuan() {
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].checked=true;
+            // console.log(inputs[i].checked);
+        }
+    }
+    function buxuan(){
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].checked=false;
+        }
+    }
+    function fan(){
+        for (let i = 0; i < inputs.length; i++) {
+            if(inputs[i].checked){
+                inputs[i].checked=false;
+            }else {
+                inputs[i].checked=true;
+            }
+        }
+    }
+</script>
+</html>
