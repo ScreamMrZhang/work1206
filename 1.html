@@ -13,7 +13,7 @@
 <body>
 <h1>分时问候</h1>
 <p>方法名为setImgAndDiv()</p>
-<img src="images/goodmorning.jpg">
+<img src="./images/goodmorning.jpg">
 <div>上午好</div>
 </body>
 <script>
@@ -26,13 +26,13 @@
         var imageElement = document.querySelector("img");
         var divElement = document.querySelector("div");
         if (hours<13){
-            imageElement.src="images/goodmorning.jpg";
+            imageElement.src="./images/goodmorning.jpg";
             divElement.innerText="上午好";
         }else if (hours<18){
-            imageElement.src="images/goodafternoon.jpg";
+            imageElement.src="./images/goodafternoon.jpg";
             divElement.innerText="下午好";
         }else{
-            imageElement.src="images/goodevening.jpg";
+            imageElement.src="./images/goodevening.jpg";
             divElement.innerText="晚上好";
         }
     }
