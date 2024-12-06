@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <h1>这里是h1-1标签</h1>
+        <h1>这里是h1-2标签</h1>
+        <h1>这里是h1-3标签</h1>
+    </div>
+    <img src="" alt="">
+    <input type="checkbox" checked id="checkbox1">
+</body>
+<script>
+    var divs = document.querySelector("div");
+    // divs.innerText ="起飞";
+    // divs.innerHTML = "<h1>我直接起飞</h1>"
+
+    console.log(divs.innerText);
+    console.log(divs.innerHTML);
+
+    //通过innerHtml获取的内容处理成innerText
+
+    var str = divs.innerHTML;
+    console.log(str.replace(/<[^<>]+>/g, ""));
+
+    var imgs = document.querySelector("img");
+    //获取标签属性值
+    console.log(imgs.src);
+    //设置标签属性值
+    // imgs.src="";
+    imgs.setAttribute("src","");
+
+    // imgs.id ="img_id";
+    imgs.setAttribute("id","img_id");
+
+    //注意class样式不能直接.class需要改成className
+    imgs.className="img_class";
+    imgs.setAttribute("className","img_class");
+
+    //批量设置某个dom节点的属性
+    function setAttrs(ele, prop) {
+        var keys =[];
+        //将所有的的属性设置给一个新集合
+        for (const k in ele) {
+            keys.push(k);
+        }
+        for (const key in prop) {
+            //判断给的属性结合里面有没有标准的属性，有就进行设置
+            if (keys.indexOf(key)> -1 )
+                ele.setAttribute(key,prop[key]);
+        }
+    }
+
+    setAttrs(imgs,{
+       src: "",
+       alt: "这是风景图",
+       style: "",
+       id: "",
+       className: ""
+    });
+
+
+    var checkbox = document.querySelector("#checkbox1");
+    checkbox.checked=false;
+
+    //标签的属性分为两种
+    //第一种类似于 id class alt src href ……   attr属性
+    //第二种类似于 disable checked selected …… prop属性
+
+
+    //设置标签样式
+    //行内样式、id、class
+    //通过js设置的一般是行内样式
+
+
+
+
+
+
+</script>
+</html>
